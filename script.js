@@ -74,4 +74,11 @@ function update() {
   table.innerHTML = html
   tableDone.innerHTML = doneHtml
 }
+$(document).on('click', ".delete-button", function (e) {
+  deleteId = $(e.target).parent().parent()[0].children[0].textContent
+  deleterow = $(e.target).parent().parent()
+  deleterow.remove()
+  window.localStorage.removeItem(deleteId)
+});
+
 update()
