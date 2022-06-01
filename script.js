@@ -81,4 +81,21 @@ $(document).on('click', ".delete-button", function (e) {
   window.localStorage.removeItem(deleteId)
 });
 
+$(document).on('click', ".edit-button", function (e) {
+  editId = $(e.target).parent().parent()[0].children[0].textContent
+  let change = JSON.parse(window.localStorage.getItem(editId))
+
+  if (change.status) {
+      change.status = false
+      localStorage.setItem(editId, JSON.stringify(change))
+  }
+  else {
+      change.status = true
+      localStorage.setItem(editId, JSON.stringify(change))
+  }
+
+  location.reload();
+
+});
+
 update()
