@@ -28,7 +28,7 @@ window.onclick = function(event) {
     modal.style.display = 'none';
   }
 }
-
+// takes the data adds the task to storage
 $("#add-task").click(function (e) {
   id = Math.random().toString(36).substring(7)
   title = document.getElementById("title").value
@@ -44,7 +44,7 @@ $("#add-task").click(function (e) {
   location.reload();
 })
 
-
+//adds the elements and buttons to the table
 function update() {
 
   lists = localStorage
@@ -52,9 +52,9 @@ function update() {
   for (const list in lists) {
     if(typeof lists[list] === 'string'){
    info = JSON.parse(lists[list])
-    debugger
+    
       if (info.status == true) {
-        debugger
+        
           btn1 = '<button style = "margin-right: 4px" type="button" class="btn btn-primary edit-button">Undo</button>'
           doneHtml = doneHtml + "<tr  style='background:lightgray'><td style='display:none' >" + info.id + "</td><td>" + info.title + "</td><td>" + info.description + "</td><td>" + info.point + "</td><td>" + info.date + "</td><td>"
           doneHtml = doneHtml + '<div class="badge bg-success status">Done</div></td><td>'
@@ -62,7 +62,7 @@ function update() {
           doneHtml = doneHtml + btn2
       }
       else {
-        debugger
+        
           html = html + "<tr><td style='display:none' >" + info.id + "</td><td>" + info.title + "</td><td>" + info.description + "</td><td>" + info.point + "</td><td>" + info.date + "</td><td>"
           html = html + '<div class="badge bg-danger status">Not Done</div></td><td>'
           html = html + btn1
@@ -74,13 +74,14 @@ function update() {
   table.innerHTML = html
   tableDone.innerHTML = doneHtml
 }
+// to delete the task when delete is clicked
 $(document).on('click', ".delete-button", function (e) {
   deleteId = $(e.target).parent().parent()[0].children[0].textContent
   deleterow = $(e.target).parent().parent()
   deleterow.remove()
   window.localStorage.removeItem(deleteId)
 });
-
+// to edit the task and make it done
 $(document).on('click', ".edit-button", function (e) {
   editId = $(e.target).parent().parent()[0].children[0].textContent
   let change = JSON.parse(window.localStorage.getItem(editId))
@@ -97,5 +98,21 @@ $(document).on('click', ".edit-button", function (e) {
   location.reload();
 
 });
+//sorts on a given column title on click
 
+const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+
+    const comparer = (idx, asc) => (a, b) => ((v1, v2) => 
+        v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
+        )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
+
+    document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
+        const table = th.closest('table');
+        const tbody = table.querySelector('tbody');
+        Array.from(tbody.querySelectorAll('tr'))
+          .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+          .forEach(tr => tbody.appendChild(tr) );
+    })));
+    // sorts on a given column title on click idea taken and adapted from:
+    //https://stackoverflow.com/questions/14267781/sorting-html-table-with-javascript/49041392#49041392
 update()
