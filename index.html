@@ -1,0 +1,98 @@
+<html>
+<head>
+
+<link rel="Stylesheet" href="./style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<title>TO DO</title>
+
+</head>
+<body>
+
+    <h2>Animated Modal with Header and Footer</h2>
+
+    <!-- Trigger/Open The Modal -->
+    <button id="myBtn">Add new Task</button>
+    <!-- The Modal -->
+    <div id="adds" class="modal">
+    
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>Add Task</h2>
+        </div>
+        <div class="modal-body">
+            <form id="add-form">
+                <div id="task-description">
+                    <h3 for="text">Task</h3>
+                    <input type="text" class="form-control" id="title" placeholder="Title"><br>
+                    <h3 for="text">Description</h3>
+                    <input type="text" class="form-control" id="description" placeholder="Description">
+                </div>
+                <div id="task-level">
+                    <h4>Importance:</h4>    
+                    <ul style="list-style-type: none">
+                        <li><input type="radio" class="level" value="1" name="levels" checked><label>Level 1</label></input></li>
+                        <li><input type="radio" class="level" value="2" name="levels"><label>Level 2</label></input></li>
+                        <li><input type="radio" class="level" value="3" name="levels"><label>Level 3</label></input></li>
+                        <li><input type="radio" class="level" value="4" name="levels"><label>Level 4</label></input></li>
+                        <li><input type="radio" class="level" value="5" name="levels"><label>Level 5</label></input></li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="add-task" id="add-task"> Add new Task </button>
+        </div>
+      </div>
+    
+    </div>
+
+
+
+
+    <div>
+        <div>
+            <h1> Todo List</h1>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col" style="display:none">Id</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Point</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody id="table">
+
+            </tbody>
+        </table>
+
+        <h1> Done List</h1>
+        <table class="table"> 
+            <thead>
+                <tr>
+                    <th scope="col" style="display:none">Id</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Point</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody id="tableDone">
+
+            </tbody>
+        </table>
+    </div>
+    <script src="script.js" async></script>
+</body>
+
+</html>
