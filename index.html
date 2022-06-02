@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <h2>Animated Modal with Header and Footer</h2>
+    <h1>The Chores List</h1>
 
     <!-- Trigger/Open The Modal -->
     <button id="myBtn">Add new Task</button>
@@ -56,45 +56,47 @@
 
 
 
-    <div>
+    <div class="tables">
         <div>
-            <h1> Todo List</h1>
+                <h1> Todo List</h1>
+            </div>
+            <div class="lists">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="display:none">Id</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Point</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table">
+
+                    </tbody>
+                </table>
         </div>
-
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col" style="display:none">Id</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Point</th>
-                    <th scope="col">Time</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Action</th>
-                </tr>
-            </thead>
-            <tbody id="table">
-
-            </tbody>
-        </table>
-
         <h1> Done List</h1>
-        <table class="table"> 
-            <thead>
-                <tr>
-                    <th scope="col" style="display:none">Id</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Point</th>
-                    <th scope="col">Time</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Action</th>
-                </tr>
-            </thead>
-            <tbody id="tableDone">
+        <div class="lists">
+            <table class="table"> 
+                <thead>
+                    <tr>
+                        <th scope="col" style="display:none">Id</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Point</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tableDone">
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
     <script src="script.js" async></script>
 </body>

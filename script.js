@@ -1,8 +1,8 @@
 var lists
 var table = document.getElementById("table")
 var tableDone = document.getElementById("tableDone")
-var btn1 = '<button style = "margin-right: 4px" type="button" class="btn btn-primary edit-button">Done</button>'
-var btn2 = '<button type="button" class="btn btn-danger delete-button" data-bs-toggle="modal" data-bs-target="#delete">Delete</button></td></tr>'
+var btn1 = '<button style = "margin-right: 4px" type="button" >Done</button>'
+var btn2 = '<button type="button"  data-bs-toggle="modal" data-bs-target="#delete">Delete</button></td></tr>'
 var html = ''
 var doneHtml = ''
 var today = new Date();
@@ -41,7 +41,7 @@ $("#add-task").click(function (e) {
       point = document.getElementsByClassName("level")[level].value
   }
   date = document.getElementById("daytime")
-  debugger
+  
   task = { id: id, title: title, description: description, status: false, point: point, date: date.value }
   window.localStorage.setItem(id, JSON.stringify(task))
   location.reload();
@@ -64,16 +64,18 @@ function update() {
         doneHtml = doneHtml + btn2
       }
       else {
+        btn1 = '<button style = "margin-right: 4px" type="button" >Done</button>'
         dateTime = info.date.split('T')
         if (dateToday === dateTime[0]) {
           hour1=dateTime[1].split(':')
           hour2=time.split(':')
-          debugger
+          
           if((parseInt(hour2[0])-parseInt(hour1[0]))<1){
             html = html + "<tr  style='background-color:#ff0000'><td style='display:none' >" + info.id + "</td><td>" + info.title + "</td><td>" + info.description + "</td><td>" + info.point + "</td><td>" + info.date + "</td><td>"
             html = html + '<div class="status">Not Done</div></td><td>'
             html = html + btn1
             html = html + btn2
+          }
           }
           else{
             html = html + "<tr><td style='display:none' >" + info.id + "</td><td>" + info.title + "</td><td>" + info.description + "</td><td>" + info.point + "</td><td>" + info.date + "</td><td>"
@@ -85,11 +87,12 @@ function update() {
       }
 
     }
-  }
+
 
   table.innerHTML = html
   tableDone.innerHTML = doneHtml
 }
+
 // to delete the task when delete is clicked
 $(document).on('click', ".delete-button", function (e) {
   deleteId = $(e.target).parent().parent()[0].children[0].textContent
